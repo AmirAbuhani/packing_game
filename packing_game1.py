@@ -175,7 +175,7 @@ class Bag:
         item_name = item.__class__.__name__
         if item in self.bag:
             self.bag.remove(item)
-            print(f"{item_name} has been successfully removed from the bag.")
+            print(f"{item_name}  has been successfully removed from the bag.")
             Items.total_weight -= item.weight
             Items.total_items -= 1
         else:
@@ -197,10 +197,12 @@ UniversalCharger = UniversalCharger("Black", "50", "Medium", "Lenovo", 12)
 passport = Passport("blue", 1, "50", "USA")
 sunglasses = Sunglasses("yes", "black", "Italy", 10)
 sneakers = Sneakers("New Balance", False, "Spain", 14)
-smartphone = Smartphone("Apple", "iOS", "128 GB", "AMOLED", "Daul Lens", "lithium, plastic", 30)
+lithium_smartphone = Smartphone("Apple", "iOS", "128 GB", "AMOLED", "Daul Lens", "lithium", 30)
+plastic_smartphone = Smartphone("Apple", "iOS", "128 GB", "AMOLED", "Daul Lens", "plastic", 30)
 laptop = Laptop("Dell", "Intel i7", "16 GB", "512 GB SSD", "NVIDIA GeForce4", 60)
 smartwatch = Smartwatch("Samsung", "Touchscreen", "3 days", "Heart Rate Monitor", "Bluetooth", 44)
-campus = Campus("Samsung", "high", "50", "iron, plastic", 4)
+iron_campus = Campus("Samsung", "high", "50", "iron", 4)
+plastic_campus = Campus("Samsung", "high", "50", "plastic", 4)
 my_bag = Bag()
 
 while True:
@@ -217,18 +219,30 @@ while True:
         elif item_type == "sneakers":
             my_bag.add_item(sneakers)
         elif item_type == "smartphone":
-            my_bag.add_item(smartphone)
+            smartphone_material = input("choose your smartphone material - lithium or plastic: ")
+            if smartphone_material == "lithium":
+                my_bag.add_item(lithium_smartphone)
+            elif smartphone_material == "plastic":
+                my_bag.add_item(plastic_smartphone)
+            else:
+                print("Invalid material!")
         elif item_type == "laptop":
             my_bag.add_item(laptop)
         elif item_type == "smartwatch":
             my_bag.add_item(smartwatch)
         elif item_type == "campus":
-            my_bag.add_item(campus)
+            campus_material = input("Choose your campus material - iron, plastic: ")
+            if campus_material == "iron":
+                my_bag.add_item(iron_campus)
+            elif campus_material == "plastic":
+                my_bag.add_item(plastic_campus)
+            else:
+                print("Invalid material!")
         else:
             print("Invalid item type!")
     elif user_choice == "remove":
         item_type = input("Which item do you want to remove?  ("
-                          "UniversalCharger/Passport/sunglasses/sneakers/smartphone/"
+                          "universal charger/passport/sunglasses/sneakers/smartphone/"
                           "laptop/smartwatch/campus): ")
         if item_type == "universal charger":
             my_bag.remove_item(UniversalCharger)
@@ -239,13 +253,25 @@ while True:
         elif item_type == "sneakers":
             my_bag.remove_item(sneakers)
         elif item_type == "smartphone":
-            my_bag.remove_item(smartphone)
+            smartphone_material = input("choose your smartphone material - lithium or plastic: ")
+            if smartphone_material == "lithium":
+                my_bag.remove_item(lithium_smartphone)
+            elif smartphone_material == "plastic":
+                my_bag.remove_item(plastic_smartphone)
+            else:
+                print("Invalid material!")
         elif item_type == "laptop":
             my_bag.remove_item(laptop)
         elif item_type == "smartwatch":
             my_bag.remove_item(smartwatch)
         elif item_type == "campus":
-            my_bag.remove_item(campus)
+            campus_material = input("Choose your campus material - iron, plastic: ")
+            if campus_material == "iron":
+                my_bag.remove_item(iron_campus)
+            elif campus_material == "plastic":
+                my_bag.remove_item(plastic_campus)
+            else:
+                print("Invalid material!")
         else:
             print("Invalid item type!")
     elif user_choice == "quit":
